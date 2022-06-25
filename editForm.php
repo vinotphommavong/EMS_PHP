@@ -1,7 +1,7 @@
 <?php 
 require("dbconnect.php");
-echo $_GET["id"];
-echo "<br>";
+//echo $_GET["id"];
+//echo "<br>";
 $id = $_GET["id"];
 
 $sql = "SELECT * FROM employees WHERE id = $id";
@@ -9,12 +9,12 @@ $result = mysqli_query($connect,$sql);
 
 $row=mysqli_fetch_assoc($result);
 
-print_r($row);
-echo "<br>";
+//print_r($row);
+//echo "<br>";
 
 $skill_arr = array("Java","PHP","Python","HTML"); //ກຽມຕົວເລືອກ 4 ຕົວເລືອກ
 
-echo $row["skill"];
+//echo $row["skill"];
 
 
 ?>
@@ -31,8 +31,8 @@ echo $row["skill"];
 <body>
 	<div class="container my-3 ">
 		<h2 class="text-center">ແບບຟອມແກ້ໄຂຂໍ້ມູນ</h2>
-		<form action="updateData.php" method="post">
-			<input type="text" value="<?php echo $row['id'];?>" name="id">
+		<form action="updateData.php" method="post" enctype="multipart/form-data">
+		<input type="hidden" value="<?php echo $row["id"];?>" name="id" >
 			<div class="form-group">
 				<label for="firstname">ຊື່</label>
 				<input type="text" name="fname" id="" class="form-control" value="<?php echo $row['fname'];?> " >
@@ -41,6 +41,11 @@ echo $row["skill"];
 				<label for="lastname">ນາມສະກຸນ</label>
 				<input type="text" name="lname" id="" class="form-control" value="<?php echo $row['lname'];?>" >
 			</div><br>
+			<div class="form-group my-2">
+					<label for="upload" >ເລືອກຮູບພາບ</label>
+					<input type="file" name="upload" >
+					<input type="hidden" name="avat"  value="<?php echo $row['av']; ?>"  class="form-control">
+   </div>
 			<div class="form-group">
 				<label for="gender"> ເພດ</label>
 				<?php 

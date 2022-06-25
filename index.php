@@ -1,5 +1,5 @@
 <?php 
-//session_start();
+
 require("dbconnect.php");
 include('auth.php');
 
@@ -41,8 +41,9 @@ $order = 1;
 	<table class="table table-bordered">
 		<thead>
 			<tr>
-				<th>ລຳດັບທີ</th>
+				<th>ລ/ດ</th>
 				<th>ລະຫັດພະນັກງານ</th>
+				<th>Avatar</th>
 				<th>ຊື່</th>
 				<th>ນາມສະກຸນ</th>
 				<th>ເພດ</th>
@@ -57,6 +58,7 @@ $order = 1;
 			<tr>
 				<td><?php echo $order++ ;?></td>
 				<td><?php echo $row[0] ;?></td>
+				<td><img src="<?php echo $row[5]; ?>" class="avatar"></td>
 				<td><?php echo $row[1] ;?></td>
 				<td><?php echo $row[2] ;?></td>
 				<td>
